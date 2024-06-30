@@ -18,24 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Animate skill charts on scroll
-    const skillSection = document.getElementById('skills');
-    const skillItems = document.querySelectorAll('.skill-item');
+});
 
-    const animateSkills = () => {
-        skillItems.forEach(item => {
-            const circle = item.querySelector('.circle');
-            const percent = item.dataset.skill;
-            circle.style.strokeDasharray = `${percent}, 100`;
-        });
-    };
+document.addEventListener('DOMContentLoaded', () => {
+    const skillCards = document.querySelectorAll('.skill-card');
+    const colors = ['#4a90e2', '#50c878', '#ff6b6b', '#ffa500', '#9370db', '#20b2aa'];
 
-    window.addEventListener('scroll', () => {
-        const sectionPos = skillSection.getBoundingClientRect().top;
-        const screenPos = window.innerHeight / 1.3;
-
-        if (sectionPos < screenPos) {
-            animateSkills();
-        }
+    skillCards.forEach(card => {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        card.style.setProperty('--card-color', randomColor);
     });
 });

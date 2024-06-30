@@ -295,53 +295,82 @@ h1, h2 {
 .timeline-content:hover {
     transform: translateY(-10px);
 }
-
-.skill-grid {
+.skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 2rem;
-    justify-items: center;
+    margin-top: 2rem;
 }
 
-.skill-item {
+.skill-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    --card-color: var(--primary-color);
 }
 
-.circular-chart {
-    display: block;
-    margin: 10px auto;
-    max-width: 80%;
-    max-height: 250px;
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-.circle-bg {
-    fill: none;
-    stroke: #eee;
-    stroke-width: 3.8;
+.skill-card i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--card-color);
+    transition: transform 0.3s ease;
 }
 
-.circle {
-    fill: none;
-    stroke-width: 2.8;
-    stroke-linecap: round;
-    animation: progress 1s ease-out forwards;
+.skill-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
 }
 
-@keyframes progress {
-    0% {
-        stroke-dasharray: 0 100;
+.experience-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-color);
+    color: white;
+    padding: 0.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover i,
+.skill-card:hover .skill-name {
+    transform: translateY(-20px);
+}
+
+.skill-card:hover .experience-text {
+    transform: translateY(0);
+}
+
+/* Dark mode styles */
+body.dark-mode .skill-card {
+    background-color: #2a2a2a;
+    color: var(--dark-text);
+}
+
+body.dark-mode .experience-text {
+    background-color: var(--secondary-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
-}
-
-.circular-chart .circle {
-    stroke: var(--primary-color);
-}
-
-.percentage {
-    fill: var(--text-color);
-    font-family: sans-serif;
-    font-size: 0.5em;
-    text-anchor: middle;
 }
 
 .about-content {
