@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Modern Resume</title>
+    <title>My Advanced Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="myscripts.js"></script>
 </head>
@@ -12,70 +12,118 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#about">About Me</a></li>
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> About Me</a></li>
             </ul>
         </nav>
+        <button id="theme-toggle"><i class="fas fa-moon"></i></button>
     </header>
 
     <main>
-        <section id="home">
-            <h1>Welcome to My Modern Resume</h1>
-            <p>Hi, I'm [Your Name]. I'm a [Your Profession] passionate about creating amazing web experiences.</p>
-            <a href="#about" class="btn">Learn More About Me</a>
+        <section id="home" class="active">
+            <div class="container">
+                <h1 class="glitch" data-text="I'm [Your Name]">I'm [Your Name]</h1>
+                <p class="subtitle">[Your Profession]</p>
+                <div class="cta-container">
+                    <a href="#projects" class="btn primary">View My Work</a>
+                    <a href="#about" class="btn secondary">Learn About Me</a>
+                </div>
+            </div>
         </section>
 
         <section id="projects">
-            <h2>Projects</h2>
-            <ul>
-                <li>
-                    <h3>Project 1</h3>
-                    <p>Description of Project 1</p>
-                    <a href="#" class="btn">View Project</a>
-                </li>
-                <li>
-                    <h3>Project 2</h3>
-                    <p>Description of Project 2</p>
-                    <a href="#" class="btn">View Project</a>
-                </li>
-                <li>
-                    <h3>Project 3</h3>
-                    <p>Description of Project 3</p>
-                    <a href="#" class="btn">View Project</a>
-                </li>
-            </ul>
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="project1.jpg" alt="Project 1">
+                        <h3>Project 1</h3>
+                        <p>Description of Project 1</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="project2.jpg" alt="Project 2">
+                        <h3>Project 2</h3>
+                        <p>Description of Project 2</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <img src="project3.jpg" alt="Project 3">
+                        <h3>Project 3</h3>
+                        <p>Description of Project 3</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="education">
-            <h2>Education</h2>
-            <ul>
-                <li>
-                    <h3>Degree 1</h3>
-                    <p>University Name, Graduation Year</p>
-                </li>
-                <li>
-                    <h3>Degree 2</h3>
-                    <p>University Name, Graduation Year</p>
-                </li>
-            </ul>
+            <div class="container">
+                <h2>Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Degree 1</h3>
+                            <p>University Name, Graduation Year</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Degree 2</h3>
+                            <p>University Name, Graduation Year</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>Skills</h2>
+                <div class="skill-grid">
+                    <div class="skill-item" data-skill="90">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <path class="circle" stroke-dasharray="90, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                            <text x="18" y="20.35" class="percentage">90%</text>
+                        </svg>
+                        <span>HTML/CSS</span>
+                    </div>
+                    <!-- Add more skill items here -->
+                </div>
+            </div>
         </section>
 
         <section id="about">
-            <h2>About Me</h2>
-            <p>This is where you can add detailed information about yourself, your skills, and your professional experience.</p>
-            <a href="#" class="btn">Download CV</a>
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <img src="profile.jpg" alt="Your Name" class="profile-image">
+                    <div class="about-text">
+                        <p>This is where you can add detailed information about yourself, your skills, and your professional experience.</p>
+                        <a href="#" class="btn download-cv">Download CV <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Your Name | Modern Resume</p>
+        <div class="container">
+            <p>&copy; 2024 Your Name | Advanced Resume</p>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // The JavaScript code remains the same
+        // JavaScript will be added here
     </script>
 </body>
 </html>
-

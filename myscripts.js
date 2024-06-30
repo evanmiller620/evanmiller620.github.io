@@ -1,39 +1,41 @@
-
 document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('nav a');
-    const sections = document.querySelectorAll('main section');
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
 
-    // Hide all sections except home
-    sections.forEach(section => {
-        if (section.id !== 'home') {
-            section.classList.add('hidden');
-        }
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        themeToggle.innerHTML = body.classList.contains('dark-mode') ? 
+            '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     });
 
-    // Add click event listeners to navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-
-            // Hide all sections
-            sections.forEach(section => section.classList.add('hidden'));
-
-            // Show the target section
-            document.getElementById(targetId).classList.remove('hidden');
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
 
-    // Add a simple animation to project list items
-    const projectItems = document.querySelectorAll('#projects li');
-    projectItems.forEach(item => {
-        item.addEventListener('mouseover', () => {
-            item.style.transform = 'scale(1.1)';
-            item.style.transition = 'transform 0.3s';
-        });
+    // Animate skill charts on scroll
+    const skillSection = document.getElementById('skills');
+    const skillItems = document.querySelectorAll('.skill-item');
 
-        item.addEventListener('mouseout', () => {
-            item.style.transform = 'scale(1)';
+    const animateSkills = () => {
+        skillItems.forEach(item => {
+            const circle = item.querySelector('.circle');
+            const percent = item.dataset.skill;
+            circle.style.strokeDasharray = `${percent}, 100`;
         });
+    };
+
+    window.addEventListener('scroll', () => {
+        const sectionPos = skillSection.getBoundingClientRect().top;
+        const screenPos = window.innerHeight / 1.3;
+
+        if (sectionPos < screenPos) {
+            animateSkills();
+        }
     });
 });
