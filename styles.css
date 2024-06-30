@@ -1,8 +1,8 @@
 
 :root {
-    --primary-color: #4a90e2;
-    --secondary-color: #50c878;
-    --accent-color: #ff6b6b;
+    --primary-color: #0026ff;
+    --secondary-color: #000000;
+    --accent-color: #790000;
     --background-color: #f8f9fa;
     --text-color: #333;
     --dark-bg: #1a1a1a;
@@ -163,12 +163,12 @@ h1, h2 {
                         -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
                         0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
     }
-    14% {
+    15% {
         text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
                         -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
                         0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
     }
-    15% {
+    34% {
         text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
                         0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
                         -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
@@ -183,12 +183,12 @@ h1, h2 {
                         0.05em 0 0 rgba(0, 255, 0, 0.75),
                         0 -0.05em 0 rgba(0, 0, 255, 0.75);
     }
-    99% {
+    70% {
         text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
                         0.05em 0 0 rgba(0, 255, 0, 0.75),
                         0 -0.05em 0 rgba(0, 0, 255, 0.75);
     }
-    100% {
+    81% {
         text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
                         -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
                         -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
@@ -289,6 +289,11 @@ h1, h2 {
     position: relative;
     border-radius: 6px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-10px);
 }
 
 .skill-grid {
