@@ -1,13 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        themeToggle.innerHTML = body.classList.contains('dark-mode') ? 
-            '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    });
-
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -27,5 +18,53 @@ document.addEventListener('DOMContentLoaded', () => {
     skillCards.forEach(card => {
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         card.style.setProperty('--card-color', randomColor);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.querySelector('nav ul');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Function to set the theme
+    function setTheme(isDark) {
+        if (isDark) {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            body.classList.remove('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    }
+
+    // Check for saved theme preference or prefer-color-scheme
+    const savedTheme = localStorage.getItem('darkMode');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if (savedTheme === 'enabled' || (savedTheme === null && prefersDarkScheme.matches)) {
+        setTheme(true);
+    }
+
+    // Toggle theme when button is clicked
+    themeToggle.addEventListener('click', () => {
+        const isDarkMode = body.classList.contains('dark-mode');
+        setTheme(!isDarkMode);
+    });
+
+    // Listen for changes in the OS theme preference
+    prefersDarkScheme.addListener((e) => {
+        if (localStorage.getItem('darkMode') === null) {
+            setTheme(e.matches);
+        }
     });
 });
