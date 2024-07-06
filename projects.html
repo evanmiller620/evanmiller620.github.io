@@ -3,57 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - [Section Name]</title>
-    <script src="myscripts.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>John Doe - Computer Engineering Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="about.html">About Me</a></li>
-            </ul>
-        </nav>
-        <button id="theme-toggle" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
-        </button>
-    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="about.html" class="nav-link">About Me</a></li>
+            <li><a href="resume.html" class="nav-link">Resume</a></li>
+        </ul>
+    </nav>
 
     <main>
-        <section id="projects">
-            <div class="container">
-                <h2>Projects</h2>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <img src="project1.jpg" alt="Project 1">
-                        <h3>Project 1</h3>
-                        <p>Description of Project 1</p>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <img src="project2.jpg" alt="Project 2">
-                        <h3>Project 2</h3>
-                        <p>Description of Project 2</p>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                    <div class="project-card">
-                        <img src="project3.jpg" alt="Project 31">
-                        <h3>Project 3</h3>
-                        <p>Description of Project 3</p>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
+        <div class="content fade-in">
+            <h1>My Projects</h1>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Smart Home System</h3>
+                    <p>Developed a IoT-based smart home system using Raspberry Pi and various sensors.</p>
+                    <a href="https://github.com/johndoe/smart-home" class="github-link" target="_blank">GitHub Repo</a>
+                </div>
+                <div class="project-card">
+                    <h3>Machine Learning Image Classifier</h3>
+                    <p>Built and trained a convolutional neural network to classify images of handwritten digits.</p>
+                    <a href="https://github.com/johndoe/ml-image-classifier" class="github-link" target="_blank">GitHub Repo</a>
+                </div>
+                <div class="project-card">
+                    <h3>Autonomous Robot</h3>
+                    <p>Created a small autonomous robot capable of navigating obstacles using computer vision.</p>
+                    <a href="https://github.com/johndoe/autonomous-robot" class="github-link" target="_blank">GitHub Repo</a>
+                </div>
+                <div class="project-card">
+                    <h3>Blockchain-based Voting System</h3>
+                    <p>Implemented a secure and transparent voting system using blockchain technology.</p>
+                    <a href="https://github.com/johndoe/blockchain-voting" class="github-link" target="_blank">GitHub Repo</a>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 Your Name | Resume</p>
+        <p>&copy; 2024 Evan Miller. All rights reserved.</p>
     </footer>
+
+    <div class="quote-container">
+        <p class="quote"></p>
+        <p class="quote-author"></p>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -3,44 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - [Section Name]</title>
-    <script src="myscripts.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>John Doe - Computer Engineering Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="about.html">About Me</a></li>
-            </ul>
-        </nav>
-        <button id="theme-toggle" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
-        </button>
-    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="projects.html" class="nav-link">Projects</a></li>
+            <li><a href="about.html" class="nav-link">About Me</a></li>
+            <li><a href="resume.html" class="nav-link">Resume</a></li>
+        </ul>
+    </nav>
 
     <main>
-        <section id="about">
-            <div class="container">
-                <h2>About Me</h2>
-                <div class="about-content">
-                    <img src="profile.jpg" alt="Your Name" class="profile-image">
-                    <div class="about-text">
-                        <p>This is where you can add detailed information about yourself, your skills, and your professional experience.</p>
-                        <a href="#" class="btn download-cv">Download CV <i class="fas fa-download"></i></a>
-                    </div>
+        <div class="content fade-in">
+            <h1>About Me</h1>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate computer engineering student with a keen interest in artificial intelligence, robotics, and embedded systems. I love solving complex problems and creating innovative solutions that can make a positive impact on the world.</p>
+                    <p>When I'm not coding or tinkering with hardware, you can find me reading science fiction novels, playing chess, or hiking in nature.</p>
+                </div>
+                <div class="skills">
+                    <h2>Skills</h2>
+                    <ul class="skill-list">
+                        <li class="skill-item" data-info="Proficient in Python for web development, data analysis, and machine learning">Python</li>
+                        <li class="skill-item" data-info="Experienced in C++ for system programming and game development">C++</li>
+                        <li class="skill-item" data-info="Skilled in Java for Android app development and enterprise applications">Java</li>
+                        <li class="skill-item" data-info="Familiar with MATLAB for signal processing and numerical computing">MATLAB</li>
+                        <li class="skill-item" data-info="Knowledge of various machine learning algorithms and frameworks like TensorFlow and PyTorch">Machine Learning</li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 Your Name | Resume</p>
+        <p>&copy; 2024 Evan Miller. All rights reserved.</p>
     </footer>
+
+    <div class="quote-container">
+        <p class="quote"></p>
+        <p class="quote-author"></p>
+    </div>
 
     <script src="script.js"></script>
 </body>

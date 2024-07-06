@@ -1,0 +1,258 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    transition: opacity 0.5s ease;
+}
+
+nav {
+    background-color: #1e1e1e;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #4CAF50;
+}
+
+main {
+    padding: 2rem;
+    min-height: calc(100vh - 100px);
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* ... (keep the existing CSS, but replace the .quote selector with the following) ... */
+
+.quote-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    max-width: 300px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.quote {
+    font-style: italic;
+    color: #4CAF50;
+    text-align: right;
+    margin: 0;
+}
+
+.quote-author {
+    color: #ffffff;
+    text-align: right;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+/* Add author-specific colors */
+.author-pratchett { color: #FF6B6B; }
+.author-riordan { color: #4ECDC4; }
+.author-colfer { color: #45B7D1; }
+.author-west { color: #FFA07A; }
+
+/* Add this new style for the main content to prevent overlap with the quote */
+main {
+    padding: 2rem;
+    min-height: calc(100vh - 180px);
+    margin-bottom: 100px;
+}
+
+/* Adjust the footer to accommodate the new quote positioning */
+footer {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Page-specific styles */
+/* Index Page */
+.hero {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
+/* Projects Page */
+.project-card {
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.github-link {
+    margin-top: auto;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.github-link:hover {
+    background-color: #45a049;
+}
+
+/* About Me Page */
+.skill-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skill-item {
+    background-color: #1e1e1e;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.skill-item:hover::after {
+    content: attr(data-info);
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    z-index: 1;
+}
+
+/* Resume Page */
+.resume-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.resume-item {
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.resume-item h3 {
+    color: #4CAF50;
+}
+
+.resume-item ul {
+    padding-left: 20px;
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.resume-item.animate {
+    animation: popIn 0.5s ease forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+/* Game */
+.game-container {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#gameCanvas {
+    border: 2px solid #4CAF50;
+    background-color: #0f0f0f;
+}
+
+#startGame {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#startGame:hover {
+    background-color: #45a049;
+}
+
+#score {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
