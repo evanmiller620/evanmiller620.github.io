@@ -51,7 +51,6 @@ footer {
     width: 100%;
 }
 
-/* ... (keep the existing CSS, but replace the .quote selector with the following) ... */
 
 .quote-container {
     position: fixed;

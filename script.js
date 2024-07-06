@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const quoteElement = document.querySelector('.quote');
     const authorElement = document.querySelector('.quote-author');
+    const box = document.querySelector('.quote-container');
 
     const quotes = {
         TerryPratchett: [
@@ -43,6 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
         authorElement.textContent = `- ${authorName}`;
         authorElement.className = `quote-author author-${selectedQuote.author}`;
     }
+
+
+    box.addEventListener('click', setRandomQuote);
+    box.addEventListener('touchstart', setRandomQuote); // Touch support for mobile devices
 
     setRandomQuote();
 
