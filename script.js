@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         EoinColfer: [
             "Confidence is ignorance. If you're feeling cocky, it's because there's something you don't know.",
-            "Crying isn't a weakness, you know. It's just your body's way of letting you know you're awesome.",
+            "Dreams come true all the time, just not for the dreamers",
+            "The thing about reading is that if you are hooked, you're not going to stop just because one series is over; you're going to go and find something else.",
         ],
         KanyeWest: [
             "I feel like I'm too busy writing history to read it.",
