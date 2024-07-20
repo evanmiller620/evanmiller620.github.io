@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
             "It's still magic even if you know how it's done.",
             "In ancient times cats were worshipped as gods; they have not forgotten this.",
             "If you don't turn your life into a story, you just become a part of someone else's story.",
-            "The pen is mightier than the sword if the sword is very short, and the pen is very sharp."
+            "The pen is mightier than the sword if the sword is very short, and the pen is very sharp.",
+            "Give a man a fire and he's warm for a day, but set fire to him and he's warm for the rest of his life.",
+            "The worst thing you can do is nothing.",
+            "That's not my cow!"
         ],
         RickRiordan: [
             "With great power... comes great need to take a nap. Wake me up later.",
@@ -23,9 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "The thing about reading is that if you are hooked, you're not going to stop just because one series is over; you're going to go and find something else.",
         ],
         KanyeWest: [
-            "I feel like I'm too busy writing history to read it.",
             "I'm not a businessman, I'm a business, man.",
-            "People always tell you, 'Be humble. Be humble.' When was the last time someone told you to be amazing? Be great! Be great! Be awesome! Be awesome!",
         ]
     };
 
@@ -47,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     box.addEventListener('click', setRandomQuote);
-    box.addEventListener('touchstart', setRandomQuote); // Touch support for mobile devices
 
     setRandomQuote();
 
@@ -81,134 +81,33 @@ function animateResumeItems() {
 if (window.location.pathname.includes('resume.html')) {
     window.addEventListener('load', animateResumeItems);
 }
+let currentImage = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    const startButton = document.getElementById('startGame');
-    const scoreElement = document.getElementById('score');
+document.addEventListener('DOMContentLoaded', function() {
+    const box = document.getElementById('clickableBox');
+    const images = document.querySelectorAll('.expandableImage');
+    let zIndex = 1; // Initial z-index value for the images
+  
+    box.addEventListener('click', function(event) {
+        const rect = box.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
 
-    const amongUs = {
-        x: 50,
-        y: canvas.height - 60,
-        width: 50,
-        height: 50,
-        jumping: false,
-        jumpHeight: 100,
-        jumpSpeed: 5,
-        currentJumpHeight: 0
-    };
+        // Show a random image
+        const randomImage = images[currentImage];
+        if (currentImage === images.length - 1) {
+            currentImage = 0;
+        } else
+            currentImage += 1;
 
-    const obstacle = {
-        x: canvas.width,
-        y: canvas.height - 40,
-        width: 20,
-        height: 40,
-        speed: 5
-    };
+        // Reset the image size before displaying it again
+        randomImage.style.display = 'block';
+        randomImage.style.zIndex = zIndex++; // Increment the z-index for each new image
 
-    let score = 0;
-    let gameLoop;
-    let amongUsImage = new Image();
-    amongUsImage.src = 'among-us.png';
-
-    function drawAmongUs() {
-        ctx.drawImage(amongUsImage, amongUs.x, amongUs.y - amongUs.currentJumpHeight, amongUs.width, amongUs.height);
-    }
-
-    function drawObstacle() {
-        ctx.fillStyle = '#ff4136';
-        ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-    }
-
-    function jump() {
-        if (!amongUs.jumping) {
-            amongUs.jumping = true;
-            function jumpAnimation() {
-                if (amongUs.currentJumpHeight < amongUs.jumpHeight && amongUs.jumping) {
-                    amongUs.currentJumpHeight += amongUs.jumpSpeed;
-                    requestAnimationFrame(jumpAnimation);
-                } else {
-                    amongUs.jumping = false;
-                    function fallAnimation() {
-                        if (amongUs.currentJumpHeight > 0) {
-                            amongUs.currentJumpHeight -= amongUs.jumpSpeed;
-                            requestAnimationFrame(fallAnimation);
-                        }
-                    }
-                    fallAnimation();
-                }
-            }
-            jumpAnimation();
-        }
-    }
-
-    function moveObstacle() {
-        obstacle.x -= obstacle.speed;
-        if (obstacle.x < -obstacle.width) {
-            obstacle.x = canvas.width;
-            score++;
-            scoreElement.textContent = `Score: ${score}`;
-        }
-    }
-
-    function checkCollision() {
-        if (
-            amongUs.x < obstacle.x + obstacle.width &&
-            amongUs.x + amongUs.width > obstacle.x &&
-            amongUs.y - amongUs.currentJumpHeight < obstacle.y + obstacle.height &&
-            amongUs.y - amongUs.currentJumpHeight + amongUs.height > obstacle.y
-        ) {
-            return true;
-        }
-        return false;
-    }
-
-    function gameOver() {
-        cancelAnimationFrame(gameLoop);
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '30px Arial';
-        ctx.fillText(`Game Over! Score: ${score}`, canvas.width / 2 - 100, canvas.height / 2);
-        startButton.style.display = 'inline-block';
-    }
-
-    function updateGame() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawAmongUs();
-        drawObstacle();
-        moveObstacle();
-
-        if (checkCollision()) {
-            gameOver();
-            return;
-        }
-
-        gameLoop = requestAnimationFrame(updateGame);
-    }
-
-    function startGame() {
-        score = 0;
-        scoreElement.textContent = 'Score: 0';
-        obstacle.x = canvas.width;
-        amongUs.currentJumpHeight = 0;
-        amongUs.jumping = false;
-        startButton.style.display = 'none';
-        updateGame();
-    }
-
-    startButton.addEventListener('click', startGame);
-    document.addEventListener('keydown', (event) => {
-        if (event.code === 'Space') {
-            event.preventDefault();
-            jump();
-        }
-    });
-
-    // Touch support for mobile devices
-    canvas.addEventListener('touchstart', (event) => {
-        event.preventDefault();
-        jump();
+        // Use requestAnimationFrame to ensure the browser registers the size reset
+        requestAnimationFrame(() => {
+            randomImage.style.transform = `translate(${x-50}px, ${y-50}px)`
+        });
     });
 });
+  

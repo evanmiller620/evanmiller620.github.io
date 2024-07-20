@@ -8,6 +8,51 @@ body {
     transition: opacity 0.5s ease;
 }
 
+
+.box {
+    width: 50vw;
+    height: 50vw; 
+    max-width: 1000px; 
+    max-height: 500px; 
+    background-color: #3498db;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative; 
+    overflow: hidden; 
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+    .box {
+      width: 80vw; /* Larger width for smaller screens */
+      height: 80vw; /* Maintain square aspect ratio */
+    }
+  
+    .expandableImage {
+      width: 30%; /* Increase the initial size of the image */
+      height: 30%; /* Increase the initial size of the image */
+    }
+}
+  
+#imageContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.expandableImage {
+    display: none;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    transition: transform 0.5s ease-in-out, width 0.5s ease-in-out, height 0.5s ease-in-out;
+    cursor: grab;
+}
+  
+
 nav {
     background-color: #1e1e1e;
     padding: 1rem;
@@ -78,20 +123,17 @@ footer {
     font-size: 0.9em;
 }
 
-/* Add author-specific colors */
 .author-pratchett { color: #FF6B6B; }
 .author-riordan { color: #4ECDC4; }
 .author-colfer { color: #45B7D1; }
 .author-west { color: #FFA07A; }
 
-/* Add this new style for the main content to prevent overlap with the quote */
 main {
     padding: 2rem;
     min-height: calc(100vh - 180px);
     margin-bottom: 100px;
 }
 
-/* Adjust the footer to accommodate the new quote positioning */
 footer {
     background-color: #1e1e1e;
     color: #ffffff;
@@ -103,7 +145,6 @@ footer {
     z-index: 10;
 }
 
-/* Page-specific styles */
 /* Index Page */
 .hero {
     text-align: center;
@@ -176,6 +217,46 @@ footer {
     z-index: 1;
 }
 
+.button {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #ddd;
+}
+
+.linkedin {
+    background-color: #0077b5;
+    color: white;
+}
+
+.email {
+    background-color: #d14836;
+    color: white;
+}
+
+.github {
+    background-color: #333;
+    color: white;
+}
+
+.button img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
 /* Resume Page */
 .resume-grid {
     display: grid;
@@ -215,7 +296,6 @@ footer {
     animation: popIn 0.5s ease forwards;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -225,33 +305,3 @@ footer {
     animation: fadeIn 1s ease-in;
 }
 
-/* Game */
-.game-container {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-#gameCanvas {
-    border: 2px solid #4CAF50;
-    background-color: #0f0f0f;
-}
-
-#startGame {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#startGame:hover {
-    background-color: #45a049;
-}
-
-#score {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-}

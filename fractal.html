@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #fractalBox {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="fractalBox"></div>
+    <script>
+        let angle = 0;
+        let depth = 0;
+
+        function setup() {
+            const canvas = createCanvas(400, 400);
+            canvas.parent('fractalBox');
+            colorMode(HSB, 360, 100, 100, 1);
+            noStroke();
+        }
+
+        function draw() {
+            background(0, 0, 95);
+            translate(width / 2, height / 2);
+            
+            for (let i = 0; i < 6; i++) {
+                push();
+                rotate(i * TWO_PI / 6);
+                drawFractal(100, depth);
+                pop();
+            }
+
+            angle += 0.02;
+            depth = map(sin(angle), -1, 1, 0, 8);
+        }
+
+        function drawFractal(size, depth) {
+            if (depth <= 0) {
+                let hue = (frameCount + size) % 360;
+                fill(hue, 80, 80, 0.7);
+                triangle(0, 0, size * cos(PI/6), size * sin(PI/6), -size * cos(PI/6), size * sin(PI/6));
+            } else {
+                for (let i = 0; i < 3; i++) {
+                    push();
+                    rotate(i * TWO_PI / 3);
+                    translate(0, size / 3);
+                    scale(0.5);
+                    drawFractal(size, depth - 1);
+                    pop();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
